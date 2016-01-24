@@ -1,3 +1,6 @@
+DOESN'T WORK
+
+
 algo function dist_max : int
 	local param
 		entier		s
