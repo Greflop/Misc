@@ -1,0 +1,18 @@
+CC=clang
+CFLAGS= -Wall -Wextra -std=c99 -O2 -pthread
+ 
+all: simple id input
+
+simple: hello_simple.c
+	$(CC) $(CFLAGS) hello_simple.c -o hello_simple
+id: hello_id.c
+	$(CC) $(CFLAGS) hello_id.c -o hello_id
+input: who_gets_input.c
+	$(CC) $(CFLAGS) who_gets_input.c -o who_gets_input
+
+check: CC=clang -fsanitize=address
+check: CFLAGS= -Wall -Wextra -std=c99 -O0 -g3 -pthread
+check: all
+
+clean:
+	rm -f hello_id hello_simple who_gets_input
